@@ -1,0 +1,56 @@
+﻿<Window x:Class="NguyenAnhTungWPF.Views.ManageCustomerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NguyenAnhTungWPF.Views"
+        mc:Ignorable="d"
+        Title="{Binding WindowTitle}" 
+        Height="450" Width="450"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        Background="#f9f9f9">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Content="Full Name:" VerticalAlignment="Center" Margin="5"/>
+        <TextBox Grid.Row="0" Grid.Column="1" VerticalContentAlignment="Center" Margin="5"
+                 Text="{Binding CurrentCustomer.FullName, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <Label Grid.Row="1" Grid.Column="0" Content="Email Address:" VerticalAlignment="Center" Margin="5"/>
+        <TextBox Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Center" Margin="5"
+                 Text="{Binding CurrentCustomer.Email, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <Label Grid.Row="2" Grid.Column="0" Content="Telephone:" VerticalAlignment="Center" Margin="5"/>
+        <TextBox Grid.Row="2" Grid.Column="1" VerticalContentAlignment="Center" Margin="5"
+                 Text="{Binding CurrentCustomer.Telephone, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <Label Grid.Row="3" Grid.Column="0" Content="Birthday:" VerticalAlignment="Center" Margin="5"/>
+        <DatePicker Grid.Row="3" Grid.Column="1" VerticalContentAlignment="Center" Margin="5"
+                    SelectedDate="{Binding CurrentCustomer.Birthday, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <Label Grid.Row="4" Grid.Column="0" Content="Password:" VerticalAlignment="Center" Margin="5"/>
+        <TextBox Grid.Row="4" Grid.Column="1" VerticalContentAlignment="Center" Margin="5"
+                 Text="{Binding CurrentCustomer.Password, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding ErrorMessage}" Foreground="Red" Margin="5" FontStyle="Italic"/>
+
+        <StackPanel Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+            <Button Content="Save" Command="{Binding SaveCommand}" Padding="20,5" Margin="5" IsDefault="True"/>
+            <Button Content="Cancel" Command="{Binding CancelCommand}" Padding="20,5" Margin="5" IsCancel="True"/>
+        </StackPanel>
+    </Grid>
+</Window>

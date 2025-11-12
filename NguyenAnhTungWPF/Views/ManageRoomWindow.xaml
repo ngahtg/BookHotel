@@ -1,0 +1,47 @@
+﻿<Window x:Class="NguyenAnhTungWPF.Views.ManageRoomWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="{Binding WindowTitle}" Height="400" Width="450"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Content="Room Number:" VerticalAlignment="Center" Margin="5"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding CurrentRoom.RoomNumber, UpdateSourceTrigger=PropertyChanged}" Margin="5" VerticalContentAlignment="Center"/>
+
+        <Label Grid.Row="1" Grid.Column="0" Content="Description:" VerticalAlignment="Center" Margin="5"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding CurrentRoom.RoomDetailDescription, UpdateSourceTrigger=PropertyChanged}" Margin="5" VerticalContentAlignment="Center" Height="50" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"/>
+
+        <Label Grid.Row="2" Grid.Column="0" Content="Max Capacity:" VerticalAlignment="Center" Margin="5"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding CurrentRoom.RoomMaxCapacity, UpdateSourceTrigger=PropertyChanged}" Margin="5" VerticalContentAlignment="Center"/>
+
+        <Label Grid.Row="3" Grid.Column="0" Content="Price Per Day:" VerticalAlignment="Center" Margin="5"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding CurrentRoom.RoomPricePerDay, UpdateSourceTrigger=PropertyChanged}" Margin="5" VerticalContentAlignment="Center"/>
+
+        <Label Grid.Row="4" Grid.Column="0" Content="Room Type:" VerticalAlignment="Center" Margin="5"/>
+        <ComboBox Grid.Row="4" Grid.Column="1" Margin="5" VerticalContentAlignment="Center"
+                  ItemsSource="{Binding RoomTypes}"
+                  DisplayMemberPath="RoomTypeName"
+                  SelectedValuePath="RoomTypeId"
+                  SelectedValue="{Binding CurrentRoom.RoomTypeId}"/>
+
+        <TextBlock Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding ErrorMessage}" Foreground="Red" HorizontalAlignment="Center" Margin="5"/>
+
+        <StackPanel Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Button Content="Save" Command="{Binding SaveCommand}" Width="80" Margin="5" IsDefault="True"/>
+            <Button Content="Cancel" Command="{Binding CancelCommand}" Width="80" Margin="5" IsCancel="True"/>
+        </StackPanel>
+    </Grid>
+</Window>
